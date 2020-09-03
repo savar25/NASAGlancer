@@ -164,7 +164,6 @@ public class searchActivity extends AppCompatActivity {
         select.setVisibility(View.GONE);
         videoView.setVisibility(View.GONE);
         videoView.onPause();
-        videoView.stopLoading();
         if (!String.valueOf(charSequence).isEmpty()) {
             SearcherNetworkClass networkClass = RetrofitClientInstance2.getRetrofit().create(SearcherNetworkClass.class);
             Call<collection> outers = networkClass.getSearchResult(charSequence);
@@ -223,7 +222,7 @@ public class searchActivity extends AppCompatActivity {
                                         videoView.setVisibility(View.VISIBLE);
                                         videoView.getSettings().setJavaScriptEnabled(true);
                                         videoView.loadUrl(urL);
-
+                                        videoView.onResume();
 
                                         videoView.setOnLongClickListener(new View.OnLongClickListener() {
                                             @Override
